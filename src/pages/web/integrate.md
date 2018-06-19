@@ -46,14 +46,14 @@
 
         ```js
         branch.init('key_live_kaFuWw8WvY7yn1d9yYiP8gokwqjV0Swt', function(err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
         ```js
         var options = { no_journeys: true };
         branch.init('key_live_kaFuWw8WvY7yn1d9yYiP8gokwqjV0Swt', options, function(err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
@@ -149,7 +149,7 @@
 
         ```js
         branch.init('key_live_kaFuWw8WvY7yn1d9yYiP8gokwqjV0Swt', function(err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
@@ -157,7 +157,7 @@
 
         ```js
         branch.data(function(err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
@@ -165,7 +165,7 @@
 
         ```js
         branch.first(function(err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
@@ -203,8 +203,8 @@
 
         ```js
         // close
-        branch.closeJourney(function(err, data) { 
-          console.log(err, data); 
+        branch.closeJourney(function(err, data) {
+          console.log(err, data);
         });
 
         // reopen
@@ -223,7 +223,7 @@
 
         ```js
         var phoneNumber = '9999999999' // +919812345678, +442071234567
-        
+
         var linkData = {
           campaign: 'content 123',
           channel: 'facebook',
@@ -251,14 +251,14 @@
         ```
 
 - ### Host deep link data
-  
+
     - Make it easier for marketers to create deep links
     - Used for [Journeys](/pages/web/journeys/), [Deep Linked Emails](/pages/emails/braze/), [Quick links](/pages/dashboard/analytics/#quick-links), and the [Chrome Extension](https://chrome.google.com/webstore/detail/branch-link-creator/pekdpppibljpmpbcjelehhnldnfbglgf)
     - Branch will scrape the web URL for deep link data on link creation
     - Validate by creating a [Quick Link](https://dashboard.branch.io/quick-links) and fill in `web URL` to your web page
 
         | Example URL | URL data | Metatags to add to your site
-        | --- | --- | --- 
+        | --- | --- | ---
         | https://shop.com/shoes/brown-loafers | productId=1234, productView=true | `<meta name="branch:deeplink:productId" content="1234" />`, `<meta name="branch:deeplink:productView" content="true" />`
         | https://shop.com/shoes | categoryId=5678 | `<meta name="branch:deeplink:categoryId" content="5678" />`
         |https://shop.com/your-mother-is-great | No corresponding app content ([open web](/pages/links/integrate/#open-web-instead-of-app)) | `<meta name="branch:deeplink:$web_only" content="true" />`
@@ -266,7 +266,7 @@
 - ### Track users
 
     - Sets the identity of a user (email, ID, UUID, etc) for events, deep links, and referrals
-    
+
     - Validate with the [Branch Dashboard](https://dashboard.branch.io/liveview/identities)  
 
         ```js
@@ -294,11 +294,11 @@
 - ### Track events
 
     - Registers a custom event
-    
+
     - Events named `open`, `close`, `install`, and `referred session` are Branch restricted
 
     - Best to [Track users](#track-users) before [Track events](#track-events) to associate a custom event to a user
-    
+
     - Validate with the [Branch Dashboard](https://dashboard.branch.io/liveview/events)
 
         ```js        
@@ -311,7 +311,7 @@
 
         ```js
         branch.track('signup', { custom: '123' }, function (err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
@@ -349,19 +349,19 @@
         };
 
         // optional
-        var metadata =  { 
-          "foo": "bar" 
+        var metadata =  {
+          "foo": "bar"
         };
 
         branch.trackCommerceEvent('purchase', commerceData, metadata, function(err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
 - ### Handle referrals
 
     - Referral points are obtained from referral rules on the [Branch Dashboard](https://dashboard.branch.io/referrals/rules)
-    
+
     - Validate on the [Branch Dashboard](https://dashboard.branch.io/referrals/analytics)
 
     - Reward credits
@@ -374,14 +374,14 @@
         var amount = 10;
         var bucket = 'this_bucket';
         branch.redeem(amount, bucket, function (err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
         ```js
         var amount = 10;
         branch.redeem(amount, function (err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
@@ -389,7 +389,7 @@
 
         ```js
         branch.credits(amount, function (err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
@@ -397,7 +397,7 @@
 
         ```js
         branch.creditHistory(function (err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
@@ -408,11 +408,11 @@
           "bucket":"default"
         };
         branch.creditHistory(options, function (err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
-        | Key | Default | Usage 
+        | Key | Default | Usage
         | --- | --- | ---
         | bucket |  | The bucket from which to retrieve credit transactions (63 max characters)
         | begin_after_id | | The credit transaction id of the last item in the previous retrieval
@@ -452,7 +452,7 @@
     - Inserts Firebase App Indexing tags on your website which will help Google index and surface content from your App to Google Search
 
         - For example:
-            
+
             ```html
             <link rel="alternate" href="android-app://{androidPackageName}/{androidURL}?{branch_tracking_params_and_additional_deep_link_data}"/>
             <link rel="alternate" href="ios-app://{iosAppId}/{iosURL}?{branch_tracking_params_and_additional_deep_link_data}"/>
@@ -469,11 +469,11 @@
             androidPackageName:'com.somecompany.app',
             androidURL:'example/home/cupertino/12345',
             data: {
-              "walkScore": 65, 
+              "walkScore": 65,
               "transitScore": 50
             }
         }, function(err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
@@ -513,8 +513,8 @@
 
     - The Branch Web SDK requires native browser Javascript and has been tested in all modern browsers with sessionStorage capability. No 3rd party libraries are needed to make use of the SDK as is it 100% native Javascript.
 
-          | Chrome | Firefox | Safari | IE 
-          | --- | --- | --- | --- 
+          | Chrome | Firefox | Safari | IE
+          | --- | --- | --- | ---
           | &#10004; | &#10004; |  &#10004; | 9, 10, 11
 
 - ### Bower or Npm compatibility
@@ -526,7 +526,7 @@
     - Add `require('branch')` or `define(['branch'], function(branch) { ... });`
 
 - ### Branch init options
-  
+
     - Properties which you can pass within `branch.initSession()`
 
     - Used for [Initialize Branch features](#initialize-branch-features)
@@ -539,12 +539,13 @@
         | disable_entry_animation | *optional* - `boolean`. When true, prevents a Journeys entry animation.
         | disable_exit_animation | *optional* - `boolean`. When true, prevents a Journeys exit animation.
         | open_app | *optional* - `boolean`. Whether to try to open the app passively through Journeys (as opposed to opening it upon user clicking); defaults to false.
+        | nonce | *optional* - `string`. A nonce value that will be included on any script or style tags Branch adds to your site. Used to whitelist these tags in your Content Security Policy.
 
 - ### Testing read deep link
 
     - Used for [Read deep link](#read-deep-link)
 
-    - Make a deep link redirect to your website 
+    - Make a deep link redirect to your website
 
         ```json
         https://example.app.link/kJNbhZ1PrF?$fallback_url=https://example.com
@@ -560,7 +561,7 @@
 
         ```js
         branch.init('key_live_kaFuWw8WvY7yn1d9yYiP8gokwqjV0Swt', function(err, data) {
-          console.log(err, data); 
+          console.log(err, data);
         });
         ```
 
@@ -577,7 +578,7 @@
         ```
 
 - ### Create call to action
-  
+
     - (**Deprecated**) Recommend to use [Share deep link](#share-deep-link) instead
 
         ```html
@@ -604,4 +605,13 @@
 
         ```
         XMLHttpRequest cannot load https://api.branch.io/v1/open. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access. The response had HTTP status code 400.
+        ```
+
+- ### Content Security Policy Violations
+
+    - Generate a dynamic nonce value, and include that value as a `script-src` and `style-src` exception within your Content Security Policy
+    - Pass that same value to `branch.init()`
+
+        ```
+        branch.init(YOUR_BRANCH_KEY, {'nonce': 'GENERATED_NONCE_VALUE' });
         ```
